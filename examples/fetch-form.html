@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AJAX Contact</title>
+</head>
+<body>
+  <form id="contact-form">
+    <input name="name" placeholder="Name" />
+    <input name="email" type="email" placeholder="Email" required />
+    <input name="subject" placeholder="Subject" />
+    <textarea name="message" placeholder="Message" required></textarea>
+    <input name="_gotcha" hidden autocomplete="off" />
+    <button>Send</button>
+  </form>
+  <p id="status" role="status"></p>
+
+  <script>
+    const endpoint = 'https://YOUR_WORKER_URL/api/submit';
+    const form = document.querySelector('#contact-form');
+    const status = document.querySelector('#status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.textContent = 'Sending…';
+
+      const payload = Object.fromEntries(new FormData(form));
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+      if (response.ok && result.ok) {
+        form.reset();
+        status.textContent = 'Thanks — your message was sent.';
+      } else {
+        status.textContent = 'Sorry, something went wrong. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

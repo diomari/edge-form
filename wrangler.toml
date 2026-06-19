@@ -1,0 +1,31 @@
+name = "edge-form-inbox"
+main = "src/index.ts"
+compatibility_date = "2026-06-18"
+
+[vars]
+RATE_LIMIT_MAX = "5"
+RATE_LIMIT_WINDOW_SECONDS = "600"
+HONEYPOT_FIELD = "_gotcha"
+MESSAGE_MIN_LENGTH = "1"
+MESSAGE_MAX_LENGTH = "5000"
+MAX_LINKS = "5"
+MAX_BODY_BYTES = "65536"
+ALLOWED_ORIGINS = "*"
+RATE_LIMIT_RETENTION_DAYS = "7"
+
+[triggers]
+crons = ["17 3 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "edge-form-inbox"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+# Secrets to set with `wrangler secret put`:
+# ADMIN_TOKEN
+# IP_HASH_SECRET
+# RESEND_API_KEY
+# MAIL_FROM
+# MAIL_TO
+# WEBHOOK_URL
+# WEBHOOK_SECRET
