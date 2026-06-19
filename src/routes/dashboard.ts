@@ -28,13 +28,13 @@ function renderLogin(): string {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>edge-form-inbox admin</title>
+  <title>edge-form admin</title>
   <style>${styles()}</style>
 </head>
 <body>
   <main class="login">
     <section class="card">
-      <p class="eyebrow">edge-form-inbox</p>
+      <p class="eyebrow">edge-form</p>
       <h1>Admin token required</h1>
       <p>Open <code>/admin?token=YOUR_ADMIN_TOKEN</code> or send an Authorization bearer token.</p>
     </section>
@@ -49,13 +49,13 @@ function renderDashboard(queryToken: string): string {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>edge-form-inbox dashboard</title>
+  <title>edge-form dashboard</title>
   <style>${styles()}</style>
 </head>
 <body>
   <div class="shell">
     <aside>
-      <p class="eyebrow">edge-form-inbox</p>
+      <p class="eyebrow">edge-form</p>
       <h1>Inbox</h1>
       <div id="summary" class="summary">Loading summary…</div>
       <button id="exportButton">Export CSV</button>
@@ -95,8 +95,8 @@ function renderDashboard(queryToken: string): string {
 function script(): string {
   return `
 const bootToken = window.__BOOT_TOKEN__;
-if (bootToken) localStorage.setItem('edge-form-inbox-token', bootToken);
-const token = localStorage.getItem('edge-form-inbox-token') || bootToken;
+if (bootToken) localStorage.setItem('edge-form-token', bootToken);
+const token = localStorage.getItem('edge-form-token') || bootToken;
 let cursor = '';
 const rows = document.getElementById('rows');
 const table = document.getElementById('table');
@@ -174,7 +174,7 @@ async function exportCsv() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'edge-form-inbox-submissions.csv';
+  link.download = 'edge-form-submissions.csv';
   link.click();
   URL.revokeObjectURL(url);
 }

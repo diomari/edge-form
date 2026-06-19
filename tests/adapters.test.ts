@@ -43,7 +43,7 @@ describe('delivery adapters', () => {
     expect(results.every((result) => result.status === 'sent')).toBe(true);
     expect(fetchMock).toHaveBeenCalledTimes(2);
     const webhookCall = fetchMock.mock.calls.find((call) => call[0] === 'https://webhook.test');
-    expect(webhookCall?.[1]?.headers.get('x-edge-form-inbox-signature')).toBeTruthy();
+    expect(webhookCall?.[1]?.headers.get('x-edge-form-signature')).toBeTruthy();
   });
 
   it('records failed results for non-2xx responses', async () => {

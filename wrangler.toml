@@ -1,4 +1,4 @@
-name = "edge-form-inbox"
+name = "edge-form"
 main = "src/index.ts"
 compatibility_date = "2026-06-18"
 
@@ -18,7 +18,7 @@ crons = ["17 3 * * *"]
 
 [[d1_databases]]
 binding = "DB"
-database_name = "edge-form-inbox"
+database_name = "edge-form"
 database_id = "00000000-0000-0000-0000-000000000000"
 
 # Secrets to set with `wrangler secret put`:

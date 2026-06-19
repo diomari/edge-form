@@ -10,7 +10,7 @@ export async function sha256Hex(value: string): Promise<string> {
 
 export async function hashIp(request: Request, env: Env): Promise<string> {
   const ip = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || 'unknown';
-  const salt = env.IP_HASH_SECRET || 'edge-form-inbox-local-development-salt';
+  const salt = env.IP_HASH_SECRET || 'edge-form-local-development-salt';
   return sha256Hex(`${salt}:${ip}`);
 }
 

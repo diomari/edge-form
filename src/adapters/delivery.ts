@@ -86,7 +86,7 @@ async function sendWebhook(env: Env, submission: NormalizedSubmission): Promise<
 
   const headers = new Headers({ 'content-type': 'application/json' });
   if (env.WEBHOOK_SECRET) {
-    headers.set('x-edge-form-inbox-signature', await hmacSha256Hex(env.WEBHOOK_SECRET, body));
+    headers.set('x-edge-form-signature', await hmacSha256Hex(env.WEBHOOK_SECRET, body));
   }
 
   try {

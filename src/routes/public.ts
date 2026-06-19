@@ -9,7 +9,7 @@ import { checkRateLimit } from '../lib/rateLimit';
 import { hasExcessiveLinks, insertSubmission, normalizeSubmission, parseSubmissionBody } from '../lib/submissions';
 
 export function health(context: HandlerContext): Response {
-  return json({ ok: true, service: 'edge-form-inbox' }, undefined, context.env, context.request);
+  return json({ ok: true, service: 'edge-form' }, undefined, context.env, context.request);
 }
 
 export async function submit(context: HandlerContext): Promise<Response> {

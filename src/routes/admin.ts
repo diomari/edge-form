@@ -115,7 +115,7 @@ export async function exportCsv(context: HandlerContext): Promise<Response> {
   const csv = toCsv((result.results ?? []) as unknown as Record<string, unknown>[], columns);
   const headers = new Headers({
     'content-type': 'text/csv; charset=utf-8',
-    'content-disposition': 'attachment; filename="edge-form-inbox-submissions.csv"',
+    'content-disposition': 'attachment; filename="edge-form-submissions.csv"',
   });
   applyCors(headers, context.env, context.request);
   return new Response(csv, { headers });

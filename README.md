@@ -1,4 +1,4 @@
-# edge-form-inbox
+# edge-form
 
 Self-hostable Cloudflare contact form backend with spam protection, D1 submission storage, Resend/webhook delivery, an admin dashboard, and CSV export.
 
@@ -31,7 +31,7 @@ npm install
 ## Create D1 database
 
 ```sh
-npx wrangler d1 create edge-form-inbox
+npx wrangler d1 create edge-form
 ```
 
 Copy the returned `database_id` into `wrangler.toml`.
